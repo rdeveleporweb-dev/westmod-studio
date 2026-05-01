@@ -290,46 +290,46 @@ $(document).ready(function () {
   // ================================
   // ANIMATION: createGridPieces (Helper)
   // ================================
-  function createGridPieces(container, rows = 8, cols = 12) {
-    const rect = container.getBoundingClientRect();
-    const imgRatio = container.naturalWidth / container.naturalHeight;
-    const boxRatio = rect.width / rect.height;
+  // function createGridPieces(container, rows = 8, cols = 12) {
+  //   const rect = container.getBoundingClientRect();
+  //   const imgRatio = container.naturalWidth / container.naturalHeight;
+  //   const boxRatio = rect.width / rect.height;
 
-    let bgWidth, bgHeight;
+  //   let bgWidth, bgHeight;
 
-    if (imgRatio > boxRatio) {
-      bgHeight = rows * 100;
-      bgWidth = (imgRatio / boxRatio) * cols * 100;
-    } else {
-      bgWidth = cols * 100;
-      bgHeight = (boxRatio / imgRatio) * rows * 100;
-    }
+  //   if (imgRatio > boxRatio) {
+  //     bgHeight = rows * 100;
+  //     bgWidth = (imgRatio / boxRatio) * cols * 100;
+  //   } else {
+  //     bgWidth = cols * 100;
+  //     bgHeight = (boxRatio / imgRatio) * rows * 100;
+  //   }
 
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const piece = document.createElement("div");
-        piece.classList.add("piece");
+  //   for (let r = 0; r < rows; r++) {
+  //     for (let c = 0; c < cols; c++) {
+  //       const piece = document.createElement("div");
+  //       piece.classList.add("piece");
 
-        piece.style.width = `${100 / cols}%`;
-        piece.style.height = `${100 / rows}%`;
-        piece.style.left = `${(c * 100) / cols}%`;
-        piece.style.top = `${(r * 100) / rows}%`;
+  //       piece.style.width = `${100 / cols}%`;
+  //       piece.style.height = `${100 / rows}%`;
+  //       piece.style.left = `${(c * 100) / cols}%`;
+  //       piece.style.top = `${(r * 100) / rows}%`;
 
-        piece.style.backgroundImage = `url(${container.src})`;
-        piece.style.backgroundSize = `${bgWidth}% ${bgHeight}%`;
-        piece.style.backgroundPosition = `${
-          (c / (cols - 1)) * 100
-        }% ${(r / (rows - 1)) * 100}%`;
-        piece.style.backgroundRepeat = "no-repeat";
+  //       piece.style.backgroundImage = `url(${container.src})`;
+  //       piece.style.backgroundSize = `${bgWidth}% ${bgHeight}%`;
+  //       piece.style.backgroundPosition = `${
+  //         (c / (cols - 1)) * 100
+  //       }% ${(r / (rows - 1)) * 100}%`;
+  //       piece.style.backgroundRepeat = "no-repeat";
 
-        container.parentNode.appendChild(piece);
-      }
-    }
+  //       container.parentNode.appendChild(piece);
+  //     }
+  //   }
 
-    container.style.opacity = 0;
-  }
+  //   container.style.opacity = 0;
+  // }
 
-  createGridPieces(document.querySelector(".pool-main img"));
+  // createGridPieces(document.querySelector(".pool-main img"));
 
   // ================================
   // ANIMATION: poolFeatureSteps
@@ -349,7 +349,7 @@ $(document).ready(function () {
     gsap.set(".pool-decp .pool-bx", { opacity: 0, y: 80 });
     gsap.set(".pool1, .pool3", { opacity: 0, scale: 0 });
 
-    const pieces = document.querySelectorAll(".piece");
+    // const pieces = document.querySelectorAll(".piece");
 
     const poolFeatureSteps = gsap.timeline({
       scrollTrigger: {
@@ -365,16 +365,12 @@ $(document).ready(function () {
     poolFeatureSteps
       .to({}, { duration: 1 })
       .to(
-        pieces,
+        ".main-join",
         {
-          opacity: 0,
-          scale: 0,
-          x: () => gsap.utils.random(-200, 200),
-          y: () => gsap.utils.random(-200, 200),
-          rotate: () => gsap.utils.random(-90, 90),
+          opacity: 0,     
           filter: "blur(8px)",
           duration: 3,
-          stagger: { amount: 0.5, from: "center" },
+          stagger: { amount: 0.5, from: "bottom" },
         },
         0,
       )
