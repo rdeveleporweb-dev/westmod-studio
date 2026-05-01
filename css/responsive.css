@@ -981,11 +981,11 @@
     padding: 11px 20px;
   }
 
-  .scroll-btm a {
-    bottom: -39px;
+.scroll-btm a {
+    bottom: -11vh;
     right: 0;
     font-size: 12px;
-  }
+}
 
   h3 {
     font-size: 20px;
@@ -1126,5 +1126,8 @@
     right: -150px;
     width: 100%;
     bottom: 0;
+  }
+  .moving-svg-sec{
+    height: unset;
   }
 }
